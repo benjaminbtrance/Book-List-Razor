@@ -12,12 +12,13 @@ namespace BookListRazor.Pages.BookList
     {
         private readonly ApplicationDbContext _db;
 
-        //Constructor
+        // Constructor
         public CreateModel(ApplicationDbContext db)
         {
             _db = db;
         }
 
+        // Automatically bind to post
         [BindProperty]
         public Book Book { get; set; }
 
@@ -25,12 +26,15 @@ namespace BookListRazor.Pages.BookList
         {
         }
 
+
         public async Task<IActionResult> OnPost()
         {
             if (ModelState.IsValid)
             {
                 await _db.Book.AddAsync(Book);
+                // Add to database
                 await _db.SaveChangesAsync();
+                // Go back to the Index Page
                 return RedirectToAction("Index");
             }
             else 
