@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BookListRazor.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Threading.Tasks;
 
 namespace BookListRazor.Pages.BookList
 {
@@ -24,6 +21,7 @@ namespace BookListRazor.Pages.BookList
 
         public void OnGet()
         {
+
         }
 
 
@@ -35,9 +33,9 @@ namespace BookListRazor.Pages.BookList
                 // Add to database
                 await _db.SaveChangesAsync();
                 // Go back to the Index Page
-                return RedirectToAction("Index");
+                return RedirectToPage("Index");
             }
-            else 
+            else
             {
                 return Page();
             }
